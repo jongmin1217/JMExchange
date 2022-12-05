@@ -17,5 +17,9 @@
         </shape>
 
     </item>
-    <item android:gravity="center" android:drawable="@drawable/ic_launcher_foreground" />
+    <item
+        android:width="60dp"
+        android:height="60dp"
+        android:gravity="center"
+        android:drawable="@drawable/jm_icon" />
 </layer-list>
