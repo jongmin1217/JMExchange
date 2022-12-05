@@ -1,0 +1,75 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-parcelize'
+}
+
+android {
+    compileSdk versions.compilesdk_version
+
+    defaultConfig {
+        applicationId "com.bellminp.jmexchange"
+        minSdk versions.minsdk_version
+        targetSdk versions.targetsdk_version
+        versionCode versions.app_version_code
+        versionName versions.app_version_name
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        dataBinding true
+    }
+
+}
+
+dependencies {
+    implementation project(":remote")
+    implementation project(":data")
+    implementation project(":domain")
+    implementation project(":common")
+
+    api deps.androidx.core_ktx
+    api deps.androidx.appcompat
+    api deps.androidx.material
+    api deps.androidx.constraintlayout
+    api deps.androidx.life_cycle_ktx
+    api deps.androidx.livedata_ktx
+    api deps.androidx.viewmodel_ktx
+
+    testApi deps.test.junit
+    testApi deps.test.arch
+    androidTestApi deps.test.runner
+    androidTestApi deps.test.espresso_core
+
+    testApi deps.mockio.mockito_inline
+    testApi deps.mockio.mockito_core
+    testApi deps.test.coroutines
+    androidTestApi deps.mockio.mockito_android
+
+    api deps.hilt.hilt
+    api deps.hilt.hilt_viewmodel
+    kapt deps.hilt.compiler
+    kapt deps.hilt.hilt_compiler
+
+
+    api deps.glide.glide
+    annotationProcessor deps.glide.annotation
+
+    api deps.splashscreen
+}

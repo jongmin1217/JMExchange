@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:bind="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="vm"
+            type="com.bellminp.jmexchange.ui.main.MainViewModel" />
+        <import type="android.view.View"/>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/basicBackGroundColor"
+        tools:context=".MainActivity">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_marginTop="50dp"
+            android:text="@string/exchange_rate_calculation"
+            style="@style/bigTextViewStyle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_remittance_country"
+            style="@style/smallTextViewStyle"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/remittance_country"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+        <TextView
+            android:id="@+id/tv_recipient_country"
+            style="@style/smallTextViewStyle"
+            android:layout_marginTop="10dp"
+            android:text="@string/recipient_country"
+            app:layout_constraintEnd_toEndOf="@id/tv_remittance_country"
+            app:layout_constraintTop_toBottomOf="@id/tv_remittance_country" />
+
+        <TextView
+            android:id="@+id/tv_exchange_rate"
+            style="@style/smallTextViewStyle"
+            android:layout_marginTop="10dp"
+            android:text="@string/exchange_rate"
+            app:layout_constraintEnd_toEndOf="@id/tv_remittance_country"
+            app:layout_constraintTop_toBottomOf="@id/tv_recipient_country" />
+
+        <TextView
+            android:id="@+id/tv_lookup_time"
+            style="@style/smallTextViewStyle"
+            android:layout_marginTop="10dp"
+            android:text="@string/lookup_time"
+            app:layout_constraintEnd_toEndOf="@id/tv_remittance_country"
+            app:layout_constraintTop_toBottomOf="@id/tv_exchange_rate" />
+
+        <TextView
+            android:id="@+id/tv_remittance_amount"
+            style="@style/smallTextViewStyle"
+            android:layout_marginTop="10dp"
+            android:text="@string/remittance_amount"
+            app:layout_constraintEnd_toEndOf="@id/tv_remittance_country"
+            app:layout_constraintTop_toBottomOf="@id/tv_lookup_time" />
+
+        <TextView
+            android:id="@+id/tv_remittance_country_value"
+            style="@style/smallTextViewStyle"
+            android:layout_marginStart="4dp"
+            android:text="@string/remittance_country_value"
+            app:layout_constraintBottom_toBottomOf="@id/tv_remittance_country"
+            app:layout_constraintStart_toEndOf="@id/tv_remittance_country"
+            app:layout_constraintTop_toTopOf="@id/tv_remittance_country" />
+
+        <TextView
+            android:id="@+id/tv_recipient_country_value"
+            style="@style/smallTextViewStyle"
+            android:layout_marginStart="4dp"
+            setRecipientCountryValue="@{vm.selectCountry}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_recipient_country"
+            app:layout_constraintStart_toEndOf="@id/tv_recipient_country"
+            app:layout_constraintTop_toTopOf="@id/tv_recipient_country" />
+
+        <TextView
+            android:id="@+id/tv_exchange_rate_value"
+            style="@style/smallTextViewStyle"
+            android:layout_marginStart="4dp"
+            android:text="@{@string/exchange_rate_value(vm.exchangeData.exchange)}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_exchange_rate"
+            app:layout_constraintStart_toEndOf="@id/tv_exchange_rate"
+            app:layout_constraintTop_toTopOf="@id/tv_exchange_rate" />
+
+        <TextView
+            android:id="@+id/tv_lookup_time_value"
+            style="@style/smallTextViewStyle"
+            android:layout_marginStart="4dp"
+            android:text="@{vm.exchangeData.time}"
+            app:layout_constraintBottom_toBottomOf="@id/tv_lookup_time"
+            app:layout_constraintStart_toEndOf="@id/tv_lookup_time"
+            app:layout_constraintTop_toTopOf="@id/tv_lookup_time" />
+
+        <EditText
+            android:id="@+id/edit_remittance_amount_value"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="4dp"
+            android:background="@drawable/shape_input_remittance_amount"
+            android:gravity="end|center_vertical"
+            android:inputType="numberSigned"
+            android:paddingStart="2dp"
+            android:paddingEnd="2dp"
+            android:textColor="?attr/basicTextColor"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@id/tv_remittance_amount"
+            app:layout_constraintStart_toEndOf="@id/tv_remittance_amount"
+            app:layout_constraintTop_toTopOf="@id/tv_remittance_amount"
+            android:text="@={vm.remittanceAmount}"
+            />
+
+        <TextView
+            android:id="@+id/tv_remittance_amount_unit"
+            style="@style/smallTextViewStyle"
+            android:layout_marginStart="4dp"
+            android:text="@string/remittance_amount_unit"
+            app:layout_constraintBottom_toBottomOf="@id/edit_remittance_amount_value"
+            app:layout_constraintStart_toEndOf="@id/edit_remittance_amount_value"
+            app:layout_constraintTop_toTopOf="@id/edit_remittance_amount_value" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/smallTextViewStyle"
+            app:layout_constraintTop_toBottomOf="@id/edit_remittance_amount_value"
+            app:layout_constraintStart_toStartOf="@id/edit_remittance_amount_value"
+            android:textColor="@color/red"
+            android:text="@string/not_straight_remittance_amount"
+            android:visibility="@{vm.straightRemittanceAmount ? View.INVISIBLE : View.VISIBLE}"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:id="@+id/tv_recipient_amount_value"
+            app:layout_constraintTop_toBottomOf="@id/tv_remittance_amount"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            style="@style/middleTextViewStyle"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:lineSpacingMultiplier="1.3"
+            android:gravity="center"
+            android:text="@{@string/recipient_amount_value(vm.exchangeData.recipientAmount)}"
+            />
+
+        <NumberPicker
+            android:id="@+id/number_picker"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="50dp"
+            android:value="@={vm.selectCountry}"
+            android:textSize="20sp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

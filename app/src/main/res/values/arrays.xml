@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="recipient_country_list">
+        <item>한국(KRW)</item>
+        <item>일본(JPY)</item>
+        <item>필리핀(PHP)</item>
+    </string-array>
+
+    <string-array name="recipient_country_type_list">
+        <item>KRW</item>
+        <item>JPY</item>
+        <item>PHP</item>
+    </string-array>
+</resources>

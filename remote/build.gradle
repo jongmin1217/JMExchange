@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+android {
+    compileSdk versions.compilesdk_version
+
+    defaultConfig {
+        minSdk versions.minsdk_version
+        targetSdk versions.targetsdk_version
+        versionCode versions.app_version_code
+        versionName versions.app_version_name
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", "\"https://api.apilayer.com/\""
+            buildConfigField "String", "API_KEY", "\"GKqShyBT5hrujyvP7uEjZHbsd02gE4AW\""
+            buildConfigField "String", "TEST_KEY", "\"ee50cd7cc73c9b7a7bb3d9617cfb6b9c\""
+            buildConfigField "String", "TEST_URL", "\"http://www.apilayer.net/\""
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", "\"https://api.apilayer.com/\""
+            buildConfigField "String", "API_KEY", "\"GKqShyBT5hrujyvP7uEjZHbsd02gE4AW\""
+            buildConfigField "String", "TEST_KEY", "\"ee50cd7cc73c9b7a7bb3d9617cfb6b9c\""
+            buildConfigField "String", "TEST_URL", "\"http://www.apilayer.net/\""
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    implementation project(":data")
+    implementation project(":common")
+
+
+    api remote.hilt.hilt
+    kapt remote.hilt.compiler
+    kapt remote.hilt.hilt_compiler
+
+    api remote.retrofit.version
+    api remote.retrofit.adapter
+    api remote.retrofit.gson
+
+    api remote.okhttp.version
+    api remote.okhttp.logging
+}
