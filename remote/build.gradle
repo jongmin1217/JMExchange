@@ -23,7 +23,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", "BASE_URL", "\"https://api.apilayer.com/\""
-            buildConfigField "String", "API_KEY", "\"GKqShyBT5hrujyvP7uEjZHbsd02gE4AW\""
+            buildConfigField "String", "API_KEY", "\"tA25026zjaSWcy5CS7t2akRkgcDUq8wJ\""
             buildConfigField "String", "TEST_KEY", "\"ee50cd7cc73c9b7a7bb3d9617cfb6b9c\""
             buildConfigField "String", "TEST_URL", "\"http://www.apilayer.net/\""
         }
@@ -31,7 +31,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", "BASE_URL", "\"https://api.apilayer.com/\""
-            buildConfigField "String", "API_KEY", "\"GKqShyBT5hrujyvP7uEjZHbsd02gE4AW\""
+            buildConfigField "String", "API_KEY", "\"tA25026zjaSWcy5CS7t2akRkgcDUq8wJ\""
             buildConfigField "String", "TEST_KEY", "\"ee50cd7cc73c9b7a7bb3d9617cfb6b9c\""
             buildConfigField "String", "TEST_URL", "\"http://www.apilayer.net/\""
         }

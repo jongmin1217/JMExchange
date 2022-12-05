@@ -17,7 +17,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="?attr/basicBackGroundColor"
-        tools:context=".MainActivity">
+        tools:context=".MainActivity"
+        tools:ignore="SpUsage">
 
         <TextView
             android:id="@+id/tv_title"
@@ -116,12 +117,11 @@
             android:paddingStart="2dp"
             android:paddingEnd="2dp"
             android:textColor="?attr/basicTextColor"
-            android:textSize="14sp"
+            android:textSize="14dp"
             app:layout_constraintBottom_toBottomOf="@id/tv_remittance_amount"
             app:layout_constraintStart_toEndOf="@id/tv_remittance_amount"
             app:layout_constraintTop_toTopOf="@id/tv_remittance_amount"
-            android:text="@={vm.remittanceAmount}"
-            />
+            android:text="@={vm.remittanceAmount}" />
 
         <TextView
             android:id="@+id/tv_remittance_amount_unit"
@@ -165,7 +165,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginBottom="50dp"
             android:value="@={vm.selectCountry}"
-            android:textSize="20sp"
+            android:textSize="20dp"
             />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

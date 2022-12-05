@@ -22,7 +22,6 @@ class RemoteDataSourceImpl @Inject constructor(
 
     override suspend fun getExchange(recipientCountry : String): Response<DataExchange> {
         val response = api.getExchange(recipientCountry,BuildConfig.API_KEY)
-        //val response = api.getExchange(BuildConfig.TEST_KEY)
         return when(getResponse(response)){
             SUCCESS -> Response.success(response.code(),response.body()?.exchangeToData())
             FAIL -> Response.error(response.code(), response.errorBody() ?: "error".toResponseBody(null))

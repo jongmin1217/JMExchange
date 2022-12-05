@@ -31,7 +31,7 @@ class MainViewModelTest : BaseUnitTest(){
 
         val dec = DecimalFormat("#,##0.00")
         for(i in 0..100){
-            viewModel.selectCountry.value = 1
+            viewModel.selectCountry.value = 0
             viewModel.remittanceAmount.value = "$i"
             viewModel.getExchange("KRW")
 

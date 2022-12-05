@@ -16,9 +16,5 @@ interface Api {
         @Header("apikey") apikey: String
     ): Response<ExchangeResponse>
 
-//    @GET("/api/live")
-//    suspend fun getExchange(
-//        @Query("access_key") access_key: String
-//    ): Response<ExchangeResponse>
 
 }
