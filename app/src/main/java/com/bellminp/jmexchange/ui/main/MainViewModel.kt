@@ -25,7 +25,7 @@ class MainViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     private var timer = Timer()
-
+    private var currencies = RECIPIENT_LIST[0]
     var networkConnected = false
 
     val straightRemittanceAmount = MutableLiveData<Boolean>().default(true)
@@ -41,8 +41,6 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    var currencies = RECIPIENT_LIST[0]
-
     val remittanceAmount = DelegateLiveData<String> { old, new ->
         if (old != new){
             straightRemittanceAmount.value = checkRemittanceAmount(new)
@@ -56,6 +54,8 @@ class MainViewModel @Inject constructor(
             initTimer()
         }
     }.default(0)
+
+
 
     private fun initTimer() {
         timer.cancel()
